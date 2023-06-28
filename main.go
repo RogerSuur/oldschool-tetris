@@ -36,13 +36,9 @@ func main() {
 
 	// Enable CORS
 
-	fileServer := http.FileServer(http.Dir("./static"))
-	corsHandler := cors.Default().Handler(fileServer)
-
-	corsScoreBoard := cors.Default().Handler(http.HandlerFunc(scoreBoard))
-
-	http.Handle("/scoreBoard", corsScoreBoard)
-	http.Handle("/", corsHandler)
+	corsMiddleware := cors.Default()
+	http.Handle("/", http.FileServer(http.Dir("./static")))
+	http.Handle("/scoreBoard", corsMiddleware.Handler(http.HandlerFunc(scoreBoard)))
 
 	log.Printf("Server listening on port %s", port)
 	http.ListenAndServe(":"+port, nil)
