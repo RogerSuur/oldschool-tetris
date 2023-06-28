@@ -6,7 +6,7 @@ const getScores = function (score) {
   soundsPause.play();
   const port = location.port || (location.protocol === "https:" ? 443 : 80);
   const request = new XMLHttpRequest();
-  request.open("GET", `http://${location.hostname}:${port}/scoreBoard`);
+  request.open("GET", `https://${location.hostname}:${port}/scoreBoard`);
   request.send();
   request.addEventListener("load", function () {
     data = JSON.parse(this.responseText);
