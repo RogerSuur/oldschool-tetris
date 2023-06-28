@@ -38,7 +38,10 @@ func main() {
 
 	fileServer := http.FileServer(http.Dir("./static"))
 	corsHandler := cors.Default().Handler(fileServer)
-	http.HandleFunc("/scoreBoard", scoreBoard)
+
+	corsScoreBoard := cors.Default().Handler(http.HandlerFunc(scoreBoard))
+
+	http.Handle("/scoreBoard", corsScoreBoard)
 	http.Handle("/", corsHandler)
 
 	log.Printf("Server listening on port %s", port)
