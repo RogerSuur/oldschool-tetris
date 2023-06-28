@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+
+	"github.com/rs/cors"
 )
 
 type tetrisPlayer struct {
@@ -32,8 +34,11 @@ func main() {
 		port = "8000" // Default port to listen on if PORT environment variable is not set
 	}
 
+	// Enable CORS
+	corsHandler := cors.Default().Handler(http.DefaultServeMux)
+
 	http.HandleFunc("/scoreBoard", scoreBoard)
-	http.Handle("/", http.FileServer(http.Dir("./static")))
+	http.Handle("/", corsHandler)
 
 	log.Printf("Server listening on port %s", port)
 	http.ListenAndServe(":"+port, nil)
