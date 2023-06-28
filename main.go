@@ -35,8 +35,9 @@ func main() {
 	}
 
 	// Enable CORS
-	corsHandler := cors.Default().Handler(http.DefaultServeMux)
 
+	fileServer := http.FileServer(http.Dir("./static"))
+	corsHandler := cors.Default().Handler(fileServer)
 	http.HandleFunc("/scoreBoard", scoreBoard)
 	http.Handle("/", corsHandler)
 
