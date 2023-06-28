@@ -4,20 +4,20 @@ let data;
 
 const getScores = function (score) {
   soundsPause.play();
-  fetch("http://localhost:8080/scoreBoard", { mode: "cors" })
-    .then((response) => response.json())
-    .then((data) => {
-      scoresContainer.style.display = "block";
-      pageButtons.style.display = "block";
-      startBtn.style.display = "none";
-      btn.style.display = "none";
-      scoreText.style.display = "none";
-      current_page = 0;
-      renderHTML(data, current_page);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  const port = location.port || (location.protocol === "https:" ? 443 : 80);
+  const request = new XMLHttpRequest();
+  request.open("GET", `http://${location.hostname}:${port}/scoreBoard`);
+  request.send();
+  request.addEventListener("load", function () {
+    data = JSON.parse(this.responseText);
+    scoresContainer.style.display = "block";
+    pageButtons.style.display = "block";
+    startBtn.style.display = "none";
+    btn.style.display = "none";
+    scoreText.style.display = "none";
+    current_page = 0;
+    renderHTML(data, current_page);
+  });
 };
 
 function gameResult(e) {
