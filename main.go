@@ -32,6 +32,8 @@ func main() {
 		port = "8000" // Default port to listen on if PORT environment variable is not set
 	}
 
+	//web: ./bin/oldschool-tetris
+	//
 	// 	// Enable CORS
 	// 	corsMiddleware := cors.New(cors.Options{
 	// 		AllowedOrigins: []string{"*"},

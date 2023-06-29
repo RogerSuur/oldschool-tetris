@@ -1,1 +1,1 @@
-web: ./bin/oldschool-tetris
+web: go run main.go
