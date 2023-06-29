@@ -9,8 +9,6 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-
-	"github.com/rs/cors"
 )
 
 type tetrisPlayer struct {
@@ -34,18 +32,26 @@ func main() {
 		port = "8000" // Default port to listen on if PORT environment variable is not set
 	}
 
-	// Enable CORS
-	corsMiddleware := cors.New(cors.Options{
-		AllowedOrigins: []string{"*"},
-		AllowedMethods: []string{"GET", "POST"},
-		AllowedHeaders: []string{"Content-Type"},
-	})
+	// 	// Enable CORS
+	// 	corsMiddleware := cors.New(cors.Options{
+	// 		AllowedOrigins: []string{"*"},
+	// 		AllowedMethods: []string{"GET", "POST"},
+	// 		AllowedHeaders: []string{"Content-Type"},
+	// 	})
 
+	// 	http.Handle("/", http.FileServer(http.Dir("./static")))
+	// 	http.Handle("/scoreBoard", corsMiddleware.Handler(http.HandlerFunc(scoreBoard)))
+
+	// 	log.Printf("Server listening on port %s", port)
+	// 	http.ListenAndServe(":"+port, nil)
+	// }
+
+	http.HandleFunc("/scoreBoard", scoreBoard)
 	http.Handle("/", http.FileServer(http.Dir("./static")))
-	http.Handle("/scoreBoard", corsMiddleware.Handler(http.HandlerFunc(scoreBoard)))
 
 	log.Printf("Server listening on port %s", port)
 	http.ListenAndServe(":"+port, nil)
+
 }
 
 func scoreBoard(w http.ResponseWriter, r *http.Request) {
