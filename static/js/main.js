@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     shadowPosition,
     minimumDistance,
     lockDelay,
-    timer;
-  fpsCounter;
+    timer,
+    fpsCounter;
 
   // draw draws the current tetrimino and it's shadow on to the grid.
   const draw = () => {
