@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreDisplay.innerText = score;
     linesDisplay.innerText = totalLines;
     levelDisplay.innerText = level;
-    fpsCounter.innerText = "00.00";
+    fpsCounter = 0;
 
     currentPosition = 4;
     randomGenerator();
