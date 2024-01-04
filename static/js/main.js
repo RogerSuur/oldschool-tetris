@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     minimumDistance,
     lockDelay,
     timer;
+  fpsCounter;
 
   // draw draws the current tetrimino and it's shadow on to the grid.
   const draw = () => {
@@ -407,6 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreDisplay.innerText = score;
     linesDisplay.innerText = totalLines;
     levelDisplay.innerText = level;
+    fpsCounter.innerText = "00.00";
 
     currentPosition = 4;
     randomGenerator();
@@ -517,7 +519,9 @@ document.addEventListener("DOMContentLoaded", () => {
     enterUser.style.display = "block";
   };
   // updateFps is run everytime gameloop is called and updates the FPS counter.
-
+  const updateFps = (since) => {
+    fpsCounter = (1000 / since).toFixed(2);
+  };
   // levelUp adds a level and changes the speed after every 10 lines completed.
   const levelUp = () => {
     if (level > 19) return;
