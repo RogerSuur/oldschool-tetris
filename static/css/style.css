@@ -57,7 +57,6 @@ body {
   margin-top: 30px;
   border: var(--default-border);
 }
-
 #start-button {
   width: 150px;
   position: relative;
