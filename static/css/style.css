@@ -1,7 +1,6 @@
 :root {
   --siteBg: black;
-  /* --squareSize: 30px; */
-  --squareSize: 2vw;
+  --squareSize: 30px;
   --container-padding: 40px;
   --default-border: 5px solid white;
 
@@ -25,10 +24,8 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  /* width: 675px;
-  height: 848px; */
-  width: 36.487vw;
-  height: 90.31vh;
+  width: 675px;
+  height: 848px;
 
   border: var(--default-border);
 }
@@ -36,29 +33,18 @@ body {
 .left-panel {
   left: var(--container-padding);
   top: var(--container-padding);
-  /* padding: 30px 15px 30px 30px; */
-  padding: 3.53% 2.22% 3.53% 4.44%;
-  /* width: 350px; */
-  width: 51.8%;
-  /* height: 788px; */
-  height: 92.9%;
-  border-color: red;
-  border-style: solid;
+  padding: 30px 15px 30px 30px;
+  width: 350px;
+  height: 788px;
 }
 
 .right-panel {
   position: absolute;
-  /* left: 400px; */
-  left: 59%;
+  left: 400px;
   top: 0px;
-  /* padding: 30px 30px 30px 15px; */
-  padding: 3.53% 4.43% 3.53% 2.2%;
-  /* width: 230px; */
-  width: 34%;
-  /* height: 788px; */
-  height: 92.92%;
-  border-color: blue;
-  border-style: solid;
+  padding: 30px 30px 30px 15px;
+  width: 230px;
+  height: 788px;
 }
 
 #logo {
